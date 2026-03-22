@@ -12,7 +12,7 @@ from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime, 
 from sqlalchemy.orm import declarative_base, sessionmaker, Session
 
 # ---  MySQL Database Setup ---
-SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:JustBeLoud#09@localhost:3306/weather_db"
+SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:password@123@localhost:3306/weather_db"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
