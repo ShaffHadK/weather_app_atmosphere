@@ -523,7 +523,7 @@ class _MainWeatherScreenState extends State<MainWeatherScreen> {
     if (code <= 3) return "assets/sunny.jpg";
     if (code >= 45 && code <= 48) return "assets/foggy.jpg";
     if (code >= 51 && code <= 67) return "assets/rainy.jpg";
-    if (code >= 71 && code <= 77) return "assets/snowy.jpg";
+    if (code >= 71 && code <= 77) return "assets/snow.jpg";
     if (code >= 95) return "assets/thunderstorm.jpg";
     return "assets/sunny.jpg";
   }
