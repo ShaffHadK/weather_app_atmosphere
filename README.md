@@ -28,7 +28,7 @@ This project is split into two distinct environments. Please ensure you have Pyt
 **1. Database Setup:** Ensure you have MySQL (e.g., MySQL Workbench) running locally. Create a new database named `weather_db`:
 
 ```sql
-CREATE DATABASE weather_app_db;
+CREATE DATABASE weather_db;
 ```
 _(Note: If your local MySQL credentials differ from user ```root``` and password ```password123```, please update the ```SQLALCHEMY_DATABASE_URL``` string at the top of ```backend/main.py```)_
 
