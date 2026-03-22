@@ -25,7 +25,7 @@ This project is split into two distinct environments. Please ensure you have Pyt
 
 ### Part 1: Starting the Backend (FastAPI + MySQL)
 
-**1. Database Setup:** Ensure you have MySQL (e.g., MySQL Workbench) running locally. Create a new database named `weather_app_db`:
+**1. Database Setup:** Ensure you have MySQL (e.g., MySQL Workbench) running locally. Create a new database named `weather_db`:
 
 ```sql
 CREATE DATABASE weather_app_db;
