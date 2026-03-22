@@ -486,6 +486,7 @@ class _MainWeatherScreenState extends State<MainWeatherScreen> {
   Map<String, dynamic>? weatherData;
   bool isLoading = true;
   final ScrollController _forecastScrollController = ScrollController();
+  final ScrollController _24forecastScrollController = ScrollController();
 
   @override
   void initState() {
@@ -496,6 +497,7 @@ class _MainWeatherScreenState extends State<MainWeatherScreen> {
   @override
   void dispose() {
     _forecastScrollController.dispose();
+    _24forecastScrollController.dispose();
     super.dispose();
   }
 
@@ -695,34 +697,40 @@ class _MainWeatherScreenState extends State<MainWeatherScreen> {
                       ),
                       const SizedBox(height: 40),
 
+                      const Text("24-HOUR FORECAST", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: Colors.white, letterSpacing: 1.5)),
+                      const SizedBox(height: 15),
+
                       SizedBox(
                         height: 160,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal, physics: const BouncingScrollPhysics(), itemCount: hourly['times'].length,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.only(right: 16.0, bottom: 15.0),
-                              child: GlassContainer(
-                                width: 90, padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(_formatTime(hourly['times'][index]), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14)),
-                                    Icon(_getWeatherIcon(hourly['weather_code'][index]), color: Colors.white, size: 28),
-                                    Text("${hourly['temperatures'][index]}°", style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600)),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        const Icon(Icons.water_drop, size: 12, color: Colors.lightBlueAccent),
-                                        const SizedBox(width: 4),
-                                        Text("${hourly['precipitation_prob'][index]}%", style: const TextStyle(color: Colors.lightBlueAccent, fontSize: 12, fontWeight: FontWeight.w600)),
-                                      ],
-                                    )
-                                  ],
+                        child: RawScrollbar(
+                          controller:_24forecastScrollController,  thumbVisibility: true, thumbColor: Colors.white54, radius: const Radius.circular(10), thickness: 4,
+                          child: ListView.builder(
+                            controller: _24forecastScrollController, scrollDirection: Axis.horizontal, physics: const BouncingScrollPhysics(), itemCount: hourly['times'].length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.only(right: 16.0, bottom: 15.0),
+                                child: GlassContainer(
+                                  width: 90, padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(_formatTime(hourly['times'][index]), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14)),
+                                      Icon(_getWeatherIcon(hourly['weather_code'][index]), color: Colors.white, size: 28),
+                                      Text("${hourly['temperatures'][index]}°", style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600)),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          const Icon(Icons.water_drop, size: 12, color: Colors.lightBlueAccent),
+                                          const SizedBox(width: 4),
+                                          Text("${hourly['precipitation_prob'][index]}%", style: const TextStyle(color: Colors.lightBlueAccent, fontSize: 12, fontWeight: FontWeight.w600)),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            );
-                          },
+                              );
+                            },
+                          ),
                         ),
                       ),
                       const SizedBox(height: 40),
