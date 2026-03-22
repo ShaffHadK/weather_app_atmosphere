@@ -12,7 +12,7 @@ import 'dart:html' as html;
 
 // --- CONFIGURATION ---
 
-const String baseUrl = 'http://localhost:8080';
+const String baseUrl = 'https://weather-backend-xsqu.onrender.com';
 
 void main() {
   runApp(const WeatherApp());
