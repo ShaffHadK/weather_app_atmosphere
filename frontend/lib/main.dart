@@ -11,7 +11,7 @@ import 'dart:html' as html;
 
 
 // --- CONFIGURATION ---
-
+// change the URL to http://localhost:8080 while testing locally
 const String baseUrl = 'https://weather-backend-xsqu.onrender.com';
 
 void main() {
